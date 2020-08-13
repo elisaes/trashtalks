@@ -1,5 +1,6 @@
 
 Rails.application.routes.draw do
+  get 'rooms/show'
   get 'intro/index'
   get 'intro/show'
   devise_for :users

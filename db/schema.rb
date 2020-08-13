@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 2020_08_12_032616) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "recipient_id"
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "types", force: :cascade do |t|
     t.string "material"
     t.string "remarks"
@@ -81,5 +91,6 @@ ActiveRecord::Schema.define(version: 2020_08_12_032616) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "lists", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "types", "lists"
 end

@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   has_many :lists
   has_one_attached :user_image
+  has_many :messages
   def set_default_role
     self.role ||= :user
   end

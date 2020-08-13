@@ -53,6 +53,10 @@ class UsersController < ApplicationController
       end 
 
     end 
+
+    @messages = Message.all
+    
+
   end 
 
   def new

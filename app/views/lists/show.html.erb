@@ -8,6 +8,10 @@
         <%= @list.user.username %>
         </span>
     <% end %>
+    <%if current_user.role=="user"%>
+    <%= link_to "chat", rooms_show_path(:target_user_id => @list.user.id) %>
+    <%end%>
+
 </p>
 <p>Pick up address: <%= @list.address %></p>
 <p>Pick up date: <%= @list.pickUpDate.to_s %></p>
@@ -67,6 +71,10 @@
         <%= link_to user_path(@list.collector) do %>
             <%= @assigned %>
         <% end %>
+            <%if current_user.role=="recycler"%>
+    <%= link_to "chat", rooms_show_path(:target_user_id => @list.collector) %>
+    <%end%>
+
     <% elsif @list.status == 2 %>
         Completed by: 
         <%= link_to user_path(@list.collector) do %>
